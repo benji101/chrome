@@ -21,7 +21,7 @@ RUN apt-get update || true \
 	fluxbox \
 	&& apt-get clean \
 	&& rm -rf /var/cache/* /var/log/apt/* /var/lib/apt/lists/* /tmp/* \
-	&& useradd -m -G chrome-remote-desktop,pulse-access chrome \
+	&& useradd -m -u 1027 -G chrome-remote-desktop,pulse-access chrome \
 	&& usermod -s /bin/bash chrome \
 	&& ln -s /crdonly /usr/local/sbin/crdonly \
 	&& ln -s /update /usr/local/sbin/update \
