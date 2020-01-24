@@ -17,9 +17,9 @@ RUN apt-get update \
 	fluxbox \
 	eterm
 
-ADD https://dl.google.com/linux/linux_signing_key.pub \
-	https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-	https://dl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb \
+ADD https://dl-ssl.google.com/linux/linux_signing_key.pub \
+	https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+	https://dl-ssl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb \
 	/tmp/
 
 RUN apt-key add /tmp/linux_signing_key.pub \
