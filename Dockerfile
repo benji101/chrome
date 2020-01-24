@@ -4,6 +4,8 @@ LABEL maintainer="Tomohisa Kusano <siomiz@gmail.com>"
 
 COPY copyables /
 
+RUN apt-get update && apt-get install -y apt-transport-https
+
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 	gdebi \
