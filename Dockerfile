@@ -8,6 +8,7 @@ ADD https://dl.google.com/linux/linux_signing_key.pub /tmp/
 
 RUN apt-get update || true \
         && apt-get install -y gnupg \
+	apt-transport-https \
         && apt-key add /tmp/linux_signing_key.pub \
 	&& apt-get update \
 	&& DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
