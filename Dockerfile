@@ -4,6 +4,15 @@ LABEL maintainer="Tomohisa Kusano <siomiz@gmail.com>"
 
 COPY copyables /
 
+ADD https://dl-ssl.google.com/linux/linux_signing_key.pub \
+	https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+	https://dl-ssl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb \
+	/tmp/
+
+RUN apt-key add /tmp/linux_signing_key.pub \
+	&& gdebi --non-interactive /tmp/google-chrome-stable_current_amd64.deb \
+	&& gdebi --non-interactive /tmp/chrome-remote-desktop_current_amd64.deb
+
 RUN apt-get update && apt-get install -y apt-transport-https
 
 RUN apt-get update \
@@ -16,15 +25,6 @@ RUN apt-get update \
 	x11vnc \
 	fluxbox \
 	eterm
-
-ADD https://dl-ssl.google.com/linux/linux_signing_key.pub \
-	https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-	https://dl-ssl.google.com/linux/direct/chrome-remote-desktop_current_amd64.deb \
-	/tmp/
-
-RUN apt-key add /tmp/linux_signing_key.pub \
-	&& gdebi --non-interactive /tmp/google-chrome-stable_current_amd64.deb \
-	&& gdebi --non-interactive /tmp/chrome-remote-desktop_current_amd64.deb
 
 RUN apt-get clean \
 	&& rm -rf /var/cache/* /var/log/apt/* /var/lib/apt/lists/* /tmp/* \
