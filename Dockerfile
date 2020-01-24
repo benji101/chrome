@@ -8,6 +8,7 @@ COPY copyables /
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
+	apt-transport-https \
 	gdebi \
 	gnupg2 \
 	fonts-takao \
